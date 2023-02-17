@@ -56,6 +56,11 @@ int	main(int ac, char **av)
 	int					the_pid;
 
 	(void)av;
+	if (ac != 1)
+	{
+		write (1, "Error, no arguments needed.\n", 28);
+		return (1);
+	}
 	the_pid = getpid();
 	sasa.sa_handler = &display_function;
 	sasa.sa_flags = SA_RESTART;
@@ -63,6 +68,7 @@ int	main(int ac, char **av)
 	sigaction(SIGUSR2, &sasa, 0);
 	ft_putnbr(the_pid);
 	write(1, "\n", 1);
+	write(1, "Waiting for a signal...\n", 24);
 	while (1)
 		continue ;
 	return (0);

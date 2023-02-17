@@ -6,7 +6,7 @@
 /*   By: gcherqui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 17:43:21 by gcherqui          #+#    #+#             */
-/*   Updated: 2023/02/15 17:44:30 by gcherqui         ###   ########.fr       */
+/*   Updated: 2023/02/17 09:48:27 by gcherqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,15 @@ int	main(int ac, char **av)
 		while (av[2][i])
 			sendbits(pid, av[2][i++]);
 	}
-	else
-		write(1, "not yet\n", 7);
+	else if (ac > 3)
+	{
+		write(1, "Too many arguments\n", 19);
+		return (1);
+	}
+	else if (ac < 3)
+	{
+		write(1, "Error, not enough arguments.\n", 29);
+		return (1);
+	}
 	return (0);
 }
